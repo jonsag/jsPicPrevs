@@ -2,7 +2,7 @@
 
 THISDIR=$(dirname $0)
 
-source $THISDIR/jspicprevs.conf
+source $THISDIR/shpicprevs.conf
 
 echo
 
@@ -35,30 +35,30 @@ echo
 echo "Uninstalling..."
 echo
 
-if [ -h $INSTALLDIR/jspicprevs ]; then
+if [ -h $INSTALLDIR/shpicprevs ]; then
    echo "Removing link"
-   rm -f $INSTALLDIR/jspicprevs
+   rm -f $INSTALLDIR/shpicprevs
 else
     echo "Link does not exist"
 fi
 
-if [ -e $INSTALLDIR/$JSPICPREVSDIR/jspicprevs.sh ]; then
+if [ -e $INSTALLDIR/$SHPICPREVSDIR/shpicprevs.sh ]; then
     echo "Removing scripts"
-    rm -f $INSTALLDIR/$JSPICPREVSDIR/*.sh
+    rm -f $INSTALLDIR/$SHPICPREVSDIR/*.sh
 else
     echo "Script does not exist"
 fi
 
-if [ -d $INSTALLDIR/$JSPICPREVSDIR ]; then
+if [ -d $INSTALLDIR/$SHPICPREVSDIR ]; then
     echo "Removing directory"
-    rmdir --ignore-fail-on-non-empty $INSTALLDIR/$JSPICPREVSDIR
+    rmdir --ignore-fail-on-non-empty $INSTALLDIR/$SHPICPREVSDIR
 else
     echo "Directory does not exist"
 fi
 
 echo
 
-if [ -h $INSTALLDIR/jspicprevs ] || [ -e $INSTALLDIR/$JSPICPREVSDIR/jspicprevs.sh ] || [ -d $INSTALLDIR/$JSPICPREVSDIR ]; then
+if [ -h $INSTALLDIR/shpicprevs ] || [ -e $INSTALLDIR/$SHPICPREVSDIR/shpicprevs.sh ] || [ -d $INSTALLDIR/$SHPICPREVSDIR ]; then
     echo "Everything could not be uninstalled"
     echo "Exiting"
     exit 1

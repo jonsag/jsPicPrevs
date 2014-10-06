@@ -7,17 +7,17 @@
 
 # location of configuration file
 # this must correlate to line in configurationfile at install time
-CONFFILEDIR="/etc/jspicprevs"
+CONFFILEDIR="/etc/shpicprevs"
 
 # version of this script
 VERSION="0.1"
 
 # checking for config and reading it
-if [ -e $CONFFILEDIR/jspicprevs.conf ]; then
-    source $CONFFILEDIR/jspicprevs.conf
+if [ -e $CONFFILEDIR/shpicprevs.conf ]; then
+    source $CONFFILEDIR/shpicprevs.conf
 else
     echo "###################################################################"
-    echo "You do not have a config file at $CONFFILEDIR/jspicprevs.conf."
+    echo "You do not have a config file at $CONFFILEDIR/shpicprevs.conf."
     echo "Make sure it's in it's right place, and the try again!"
     echo "Exiting..."
     echo "###################################################################"
@@ -34,7 +34,7 @@ if [ -d $TEMPDIR ]; then
     echo "##########################################################################"
     echo -e $GREEN"Temporary directory $TEMPDIR exists" $RESET
     echo -e $YELLOW"Cleaning out old temp files..." $RESET
-    rm $TEMPDIR/jspicprevs*
+    rm $TEMPDIR/shpicprevs*
     echo "##########################################################################"
 else
     echo "##########################################################################"
@@ -106,7 +106,7 @@ fi
 echo
 
 # remove spaces in filenames
-$INSTALLDIR/$JSPICPREVSDIR/rename.sh
+$INSTALLDIR/$SHPICPREVSDIR/rename.sh
 
 
 let NOPICS=($WIDTH*$HEIGTH)

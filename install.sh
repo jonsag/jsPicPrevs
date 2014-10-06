@@ -3,7 +3,7 @@
 THISDIR=$(dirname $0)
 UNINSTALL="no"
 
-source $THISDIR/jspicprevs.conf
+source $THISDIR/shpicprevs.conf
 
 echo
 
@@ -38,7 +38,7 @@ echo
 
 
 # check for previous installation
-if [ -d $INSTALLDIR/$JSPICPREVSDIR ] || [ -e $INSTALLDIR/jspicprevs ]; then
+if [ -d $INSTALLDIR/$SHPICPREVSDIR ] || [ -e $INSTALLDIR/shpicprevs ]; then
     echo "The directory and/or files already exist"
     echo "Do you want to uninstall first?"
     echo
@@ -59,9 +59,9 @@ else
 fi
 
 # create binaries directory, copy scripts to it, and create link
-mkdir $INSTALLDIR/$JSPICPREVSDIR
-cp $THISDIR/*.sh $INSTALLDIR/$JSPICPREVSDIR/
-ln -s $JSPICPREVSDIR/jspicprevs.sh $INSTALLDIR/jspicprevs
+mkdir $INSTALLDIR/$SHPICPREVSDIR
+cp $THISDIR/*.sh $INSTALLDIR/$SHPICPREVSDIR/
+ln -s $SHPICPREVSDIR/shpicprevs.sh $INSTALLDIR/shpicprevs
 
 # check for logdir, and set permissions
 if [ -d $LOGDIR ]; then
@@ -86,7 +86,7 @@ fi
 echo
 
 # create conf file
-if [ -e $CONFFILEDIR/jspicprevs.conf ]; then
+if [ -e $CONFFILEDIR/shpicprevs.conf ]; then
     echo "Configuration file already exists."
     echo "Do you wish to overwrite it?"
     PS3="Your Choice:"
@@ -101,22 +101,22 @@ fi
 
 # overwrite conf file if requested, and set permissions
 if [ $OVERWRITE = "yes" ]; then
-    cp $THISDIR/jspicprevs.conf $CONFFILEDIR/jspicprevs.conf
+    cp $THISDIR/shpicprevs.conf $CONFFILEDIR/shpicprevs.conf
 else
     TIME=$(date +%y%m%d-%H:%M:%S)
-    cp $THISDIR/jspicprevs.conf $CONFFILEDIR/jspicprevs.conf.$TIME
-    echo "A copy of the new configuration file is located at $CONFFILEDIR/jspicprevs.conf.$TIME"
+    cp $THISDIR/shpicprevs.conf $CONFFILEDIR/shpicprevs.conf.$TIME
+    echo "A copy of the new configuration file is located at $CONFFILEDIR/shpicprevs.conf.$TIME"
 fi
 
 # check if install was successful
-if [ -d $INSTALLDIR/$JSPICPREVSDIR ]; then
-    if [ -x $INSTALLDIR/$JSPICPREVSDIR/jspicprevs.sh ]; then
-        if [ -h $INSTALLDIR/jspicprevs ]; then
+if [ -d $INSTALLDIR/$SHPICPREVSDIR ]; then
+    if [ -x $INSTALLDIR/$SHPICPREVSDIR/shpicprevs.sh ]; then
+        if [ -h $INSTALLDIR/shpicprevs ]; then
             echo "Install successful"
             echo
-            echo "Configuration file is at $CONFFILEDIR/jspicprevs.conf"
+            echo "Configuration file is at $CONFFILEDIR/shpicprevs.conf"
             echo
-            echo "Run this program with jspicprevs"
+            echo "Run this program with shpicprevs"
         else
             echo "Install unsuccessful"
             echo "No link created"
